@@ -12,8 +12,8 @@ const index = () => {
   return (
     <div className="flex justify-center">
       {/* {noramlVar} */}
-      <Button name="Click Me" />
-      <Button name="Save" />
+      <Button name="Click Me" backgroundColor="bg-blue-500" />
+      <Button name="Save" backgroundColor="bg-red-500" />
       <Button name="Edit" />
     </div>
   );

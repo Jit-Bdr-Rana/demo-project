@@ -1,10 +1,15 @@
 //props
 interface Props {
   name: string;
+  backgroundColor?: string;
 }
 
-export default function Button(props: Props) {
+export default function Button({ name, backgroundColor }: Props) {
   return (
-    <button className="bg-amber-500 p-3 rounded-md m-3">{props.name}</button>
+    <button
+      className={`${backgroundColor || "bg-amber-500"}  p-3 rounded-md m-3`}
+    >
+      {name}
+    </button>
   );
 }
