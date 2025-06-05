@@ -45,9 +45,7 @@ export default function Tab() {
       {tab === "Tab2" && (
         <div className="border h-52">
           <h1>Tab 2 content</h1>
-          <p>
-            Tab 2 content Lorem Ipsum is simply dummy text of the printing and
-          </p>
+          <p>Tab 2 content</p>
         </div>
       )}
     </div>
