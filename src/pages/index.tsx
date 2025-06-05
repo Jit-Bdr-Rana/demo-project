@@ -1,5 +1,11 @@
+import Tab from "@/component/Tab";
 import Image from "next/image";
 
 export default function Home() {
-  return <div>hellow world</div>;
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h1>Tab Design</h1>
+      <Tab />
+    </div>
+  );
 }
