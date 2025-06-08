@@ -10,7 +10,7 @@ const index = () => {
   };
   // jsx
   return (
-    <div className="flex justify-center">
+    <div className="flex custom-css  justify-center">
       {/* {noramlVar} */}
       <Button name="Click Me" backgroundColor="bg-blue-500" />
       <Button name="Save" backgroundColor="bg-red-500" />
