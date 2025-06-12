@@ -9,11 +9,11 @@ Todo:
 3.  Design Alertbox/Notification box ✅
 4.  Modal
 5.  Accordion
-6.  Table
+6.  Table ✅
 7.  Progress ✅
 8.  Skeleton
 9.  BreadCrumb ✅
-10. Counter
+10. Counter ✅
 11. List and append element ✅
 12. Pagination
 13. Switch
