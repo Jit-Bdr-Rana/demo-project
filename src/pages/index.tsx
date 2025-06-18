@@ -1,12 +1,17 @@
 import Alert from "@/component/Alert";
 import Breadcrumb from "@/component/Breadcrumb";
+import Button from "@/component/Button";
 import Counter from "@/component/Counter";
+import Layout from "@/component/layout/Layout";
 import List from "@/component/List";
+import Modal from "@/component/Modal";
 import Tab from "@/component/Tab";
 import Table from "@/component/Table";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [open, setIsOpen] = useState(false);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       {/* <h1>Tab Design</h1> */}
@@ -20,9 +25,9 @@ export default function Home() {
           { title: "Contact", link: "/contact" },
         ]}
       /> */}
-      <Alert message="This is a success message" type="success" />
-      <Alert message="This is a error message" type="error" />
-      <Table
+      {/* <Alert message="This is a success message" type="success" /> */}
+      {/* <Alert message="This is a error message" type="error" /> */}
+      {/* <Table
         data={[
           {
             name: "John Doe",
@@ -55,7 +60,14 @@ export default function Home() {
             dataIndex: "phone",
           },
         ]}
-      />
+      /> */}
+
+      <Layout>
+        <Button onClick={() => setIsOpen(true)} name="Open Modal" />
+        <Modal isOpen={open} setIsOpen={setIsOpen} title="Modal Title">
+          this is new modal content
+        </Modal>
+      </Layout>
     </div>
   );
 }
