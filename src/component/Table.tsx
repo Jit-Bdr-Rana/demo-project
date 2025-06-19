@@ -1,6 +1,7 @@
 interface ColumnPrps {
   title: string;
   dataIndex: string;
+  render?: (data: any) => React.ReactNode;
 }
 
 interface Props {
@@ -11,7 +12,6 @@ interface Props {
 const Table = ({ data, columns }: Props) => {
   return (
     <div>
-      <h1>Table design</h1>
       <table className="w-full border">
         <thead>
           <tr className="bg-green-800">
@@ -31,7 +31,9 @@ const Table = ({ data, columns }: Props) => {
                 {columns.map((column, index) => {
                   return (
                     <td key={index} className="px-4 py-2">
-                      {item[column.dataIndex]}
+                      {column?.render
+                        ? column?.render(item)
+                        : item[column.dataIndex]}
                     </td>
                   );
                 })}

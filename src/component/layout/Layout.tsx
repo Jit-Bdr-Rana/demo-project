@@ -2,12 +2,15 @@ import { FaUser } from "react-icons/fa6";
 import { FaList } from "react-icons/fa6";
 import { AiFillDashboard } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
+import { useState } from "react";
+import Link from "next/link";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const [collapse, setCollapse] = useState(false);
   const menuList = [
     {
       title: "Dashboard",
@@ -16,33 +19,46 @@ const Layout = ({ children }: LayoutProps) => {
     },
     {
       title: "Users",
-      path: "/users",
+      path: "/user",
       icon: <FaUserFriends />,
     },
   ];
   return (
     <div className="flex w-full items-center justify-center min-h-screen">
-      <div className=" bg-green-800 w-[20%] min-h-screen">
+      <div
+        className={`bg-green-800  ${
+          collapse ? "w-[5%]" : "w-[20%]"
+        } min-h-screen`}
+      >
         <h1 className="text-center p-3 ">Admin</h1>
         <ul className="p-2">
           {menuList.map((item, index) => {
             return (
-              <li className="p-2 flex items-center gap-2 hover:bg-green-950 cursor-pointer">
-                {item.icon}
-                <span>{item.title}</span>
-              </li>
+              <Link href={item.path}>
+                <li className="p-2 flex items-center gap-2 hover:bg-green-950 cursor-pointer">
+                  {item.icon}
+                  {!collapse && <span>{item.title}</span>}
+                </li>
+              </Link>
             );
           })}
         </ul>
       </div>
-      <div className=" bg-white w-[80%] min-h-screen ">
+      <div
+        className={`bg-white  ${
+          collapse ? "w-[95%]" : "w-[80%]"
+        } min-h-screen `}
+      >
+        {/* header */}
         <div
           className={
             "shadow-md text-black border border-gray-300 p-5 flex justify-between"
           }
         >
           <div className="flex items-center gap-3">
-            <FaList className="cursor-pointer" />
+            <button onClick={() => setCollapse(!collapse)}>
+              <FaList className="cursor-pointer" />
+            </button>
             <h1>Header</h1>
           </div>
           <div className="flex items-center gap-3">
@@ -50,6 +66,8 @@ const Layout = ({ children }: LayoutProps) => {
             <span>username</span>
           </div>
         </div>
+
+        <div className="p-3">{children}</div>
       </div>
     </div>
   );

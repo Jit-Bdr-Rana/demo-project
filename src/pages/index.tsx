@@ -62,12 +62,10 @@ export default function Home() {
         ]}
       /> */}
 
-      <Layout>
-        <Button onClick={() => setIsOpen(true)} name="Open Modal" />
-        <Modal isOpen={open} setIsOpen={setIsOpen} title="Modal Title">
-          this is new modal content
-        </Modal>
-      </Layout>
+      <Button onClick={() => setIsOpen(true)} name="Open Modal" />
+      <Modal isOpen={open} setIsOpen={setIsOpen} title="Modal Title">
+        this is new modal content
+      </Modal>
     </div>
   );
 }
