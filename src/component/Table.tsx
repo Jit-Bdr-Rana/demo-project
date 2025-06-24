@@ -12,9 +12,9 @@ interface Props {
 const Table = ({ data, columns }: Props) => {
   return (
     <div>
-      <table className="w-full border">
+      <table className="w-full overflow-auto ">
         <thead>
-          <tr className="bg-green-800">
+          <tr className="bg-green-800 text-white rounded-md">
             {columns.map((column, index) => {
               return (
                 <th key={index} className="px-4 py-2">
@@ -25,9 +25,9 @@ const Table = ({ data, columns }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item: any, index: number) => {
+          {data?.map((item: any, index: number) => {
             return (
-              <tr key={index} className="odd:bg-gray-50 odd:text-black">
+              <tr key={index} className="odd:bg-gray-100 ">
                 {columns.map((column, index) => {
                   return (
                     <td key={index} className="px-4 py-2">

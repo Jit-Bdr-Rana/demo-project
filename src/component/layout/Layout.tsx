@@ -26,7 +26,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex w-full items-center justify-center min-h-screen">
       <div
-        className={`bg-green-800  ${
+        className={`bg-green-800  text-white ${
           collapse ? "w-[5%]" : "w-[20%]"
         } min-h-screen`}
       >
