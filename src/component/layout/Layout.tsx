@@ -26,7 +26,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex w-full items-center justify-center min-h-screen">
       <div
-        className={`bg-green-800  text-white ${
+        className={`bg-green-800 z-10 fixed inset-0 text-white ${
           collapse ? "w-[5%]" : "w-[20%]"
         } min-h-screen`}
       >
@@ -46,14 +46,14 @@ const Layout = ({ children }: LayoutProps) => {
       </div>
       <div
         className={`bg-white  ${
-          collapse ? "w-[95%]" : "w-[80%]"
-        } min-h-screen `}
+          collapse ? "ml-[4.5rem]" : "ml-[17rem]"
+        } min-h-screen w-full `}
       >
         {/* header */}
         <div
-          className={
-            "shadow-md text-black border border-gray-300 p-5 flex justify-between"
-          }
+          className={`${
+            collapse ? "ml-16" : "ml-[16.5rem]"
+          } shadow-md  fixed inset-x-0 text-black border bg-white border-gray-200 p-5 flex justify-between`}
         >
           <div className="flex items-center gap-3">
             <button onClick={() => setCollapse(!collapse)}>
@@ -67,7 +67,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
 
-        <div className="p-3">{children}</div>
+        <div className=" mt-16 p-3">{children}</div>
       </div>
     </div>
   );
