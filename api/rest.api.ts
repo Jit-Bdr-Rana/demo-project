@@ -13,3 +13,12 @@ export const get = async (url: string) => {
     return { error: e?.response?.message };
   }
 };
+
+export const post = async (url: string, data: any) => {
+  try {
+    const response = await API.post(url, data);
+    return { data: response.data };
+  } catch (e: any) {
+    return { error: e?.response?.message };
+  }
+};
