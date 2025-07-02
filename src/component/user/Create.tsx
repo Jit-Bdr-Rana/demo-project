@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { get, post } from "../../../api/rest.api";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 interface UserForm {
   name: string;
@@ -33,6 +34,9 @@ const Create = () => {
     //   alert("Uer created successfully")
     // }
   };
+  useEffect(()=>{
+
+  },[])
   return (
     <div>
       <h1>{router.query.id ? "Edit User" : "Create User"}</h1>

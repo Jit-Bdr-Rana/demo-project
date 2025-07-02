@@ -17,7 +17,7 @@ const User = () => {
   // fetchUser();
   useEffect(() => {
     fetchUser();
-  }, [toggle]);
+  }, []);
   return (
     <div>
       {toggle && <div>This is toggle</div>}
