@@ -22,6 +22,11 @@ const Layout = ({ children }: LayoutProps) => {
       path: "/user",
       icon: <FaUserFriends />,
     },
+    {
+      title: "Role",
+      path: "/role",
+      icon: <FaUserFriends />,
+    },
   ];
   return (
     <div className="flex w-full items-center justify-center min-h-screen">

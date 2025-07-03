@@ -1,4 +1,4 @@
-interface ColumnPrps {
+export interface ColumnPrps {
   title: string;
   dataIndex: string;
   render?: (data: any) => React.ReactNode;

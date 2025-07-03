@@ -2,7 +2,7 @@ import axios from "axios";
 import { error } from "console";
 
 const API = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
+  baseURL: "http://localhost:5000/api",
 });
 
 export const get = async (url: string) => {
