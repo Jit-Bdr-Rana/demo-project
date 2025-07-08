@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import Table from "../Table";
+import Table, { ColumnPrps } from "../Table";
 import Link from "next/link";
 import Button from "../Button";
 import { get } from "../../../api/rest.api";
 
 const RoleTable = () => {
   const [roleList, setRoleList] = useState([]);
-  const column: any = [
+  const column: ColumnPrps[] = [
     {
       title: "Name",
-      dateIndex: "name",
+      dataIndex: "name",
     },
     {
       title: "Description",
@@ -19,7 +19,6 @@ const RoleTable = () => {
   const fetchRole = async () => {
     const { data, error } = await get("/role");
     if (data && !error) {
-      alert(JSON.stringify(data));
       setRoleList(data?.data);
     }
   };
@@ -29,7 +28,7 @@ const RoleTable = () => {
   return (
     <div>
       <div className="flex w-full justify-between items-center ">
-        <h1 className="text text-black ">Wellcome to the user page</h1>
+        <h1 className="text text-black ">Role</h1>
         <Link href="/role/create">
           <Button name="Create Role" backgroundColor="bg-blue-500" />
         </Link>

@@ -1,7 +1,7 @@
 export interface ColumnPrps {
   title: string;
   dataIndex: string;
-  render?: (data: any) => React.ReactNode;
+  render?: (data: any, i: number) => React.ReactNode;
 }
 
 interface Props {
@@ -14,7 +14,7 @@ const Table = ({ data, columns }: Props) => {
     <div>
       <table className="w-full overflow-auto ">
         <thead>
-          <tr className="bg-green-800 text-white rounded-md">
+          <tr className="bg-green-800 text-left rounded-md">
             {columns.map((column, index) => {
               return (
                 <th key={index} className="px-4 py-2">
@@ -25,14 +25,17 @@ const Table = ({ data, columns }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {data?.map((item: any, index: number) => {
+          {data?.map((item: any, topIndex: number) => {
             return (
-              <tr key={index} className="odd:bg-gray-100 ">
+              <tr
+                key={topIndex}
+                className="odd:bg-gray-100 text-left text-black "
+              >
                 {columns.map((column, index) => {
                   return (
                     <td key={index} className="px-4 py-2">
                       {column?.render
-                        ? column?.render(item)
+                        ? column?.render(item, topIndex)
                         : item[column.dataIndex]}
                     </td>
                   );
