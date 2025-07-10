@@ -22,3 +22,21 @@ export const post = async (url: string, data: any) => {
     return { error: e?.response?.message };
   }
 };
+
+export const patch = async (url: string, data: any) => {
+  try {
+    const response = await API.patch(url, data);
+    return { data: response.data };
+  } catch (e: any) {
+    return { error: e?.response?.message };
+  }
+};
+
+export const remove = async (url: string) => {
+  try {
+    const response = await API.delete(url);
+    return { data: response.data };
+  } catch (e: any) {
+    return { error: e?.response?.message };
+  }
+};

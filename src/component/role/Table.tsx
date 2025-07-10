@@ -2,10 +2,20 @@ import { useEffect, useState } from "react";
 import Table, { ColumnPrps } from "../Table";
 import Link from "next/link";
 import Button from "../Button";
-import { get } from "../../../api/rest.api";
+import { get, remove } from "../../../api/rest.api";
+import { useRouter } from "next/router";
 
 const RoleTable = () => {
   const [roleList, setRoleList] = useState([]);
+  const router = useRouter();
+  const deleteRole = async (id: number) => {
+    await remove(`/role/${id}`);
+    alert("Role deleted successfully");
+    fetchRole();
+  };
+  const updateRole = (id: number) => {
+    router.push(`/role/create?id=${id}`);
+  };
   const column: ColumnPrps[] = [
     {
       title: "Name",
@@ -15,6 +25,18 @@ const RoleTable = () => {
       title: "Description",
       dataIndex: "description",
     },
+    {
+      title: "Action",
+      dataIndex: "action",
+      render: (role) => {
+        return (
+          <span>
+            <Button onClick={() => updateRole(role.id)} name="Edit" />
+            <Button onClick={() => deleteRole(role?.id)} name="Delete" />
+          </span>
+        );
+      },
+    },
   ];
   const fetchRole = async () => {
     const { data, error } = await get("/role");
@@ -22,6 +44,7 @@ const RoleTable = () => {
       setRoleList(data?.data);
     }
   };
+
   useEffect(() => {
     fetchRole();
   }, []);
@@ -33,7 +56,7 @@ const RoleTable = () => {
           <Button name="Create Role" backgroundColor="bg-blue-500" />
         </Link>
       </div>
-      <Table columns={column} data={[]} />
+      <Table columns={column} data={roleList} />
     </div>
   );
 };
