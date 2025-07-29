@@ -1,13 +1,5 @@
-import Alert from "@/component/Alert";
-import Breadcrumb from "@/component/Breadcrumb";
 import Button from "@/component/Button";
-import Counter from "@/component/Counter";
-import Layout from "@/component/layout/Layout";
-import List from "@/component/List";
 import Modal from "@/component/Modal";
-import Tab from "@/component/Tab";
-import Table from "@/component/Table";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
