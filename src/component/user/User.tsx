@@ -21,15 +21,15 @@ const User = () => {
   return (
     <div>
       {toggle && <div>This is toggle</div>}
-      <Button onClick={() => setToggle(!toggle)} name="Toggle" />
+      {/* <Button onClick={() => setToggle(!toggle)} name="Toggle" />
       <div className="flex w-full justify-between items-center ">
         <h1 className="text text-black ">Wellcome to the user page</h1>
         <Link href="/user/create">
           <Button name="Create User" backgroundColor="bg-blue-500" />
         </Link>
-      </div>
-      ~
-      <Table
+      </div> */}
+
+      {/* <Table
         columns={[
           {
             title: "id",
@@ -42,7 +42,7 @@ const User = () => {
           {
             title: "username",
             dataIndex: "username",
-          },
+          },    
           {
             title: "Email",
             dataIndex: "email",
@@ -64,7 +64,7 @@ const User = () => {
           },
         ]}
         data={userList}
-      />
+      /> */}
     </div>
   );
 };
