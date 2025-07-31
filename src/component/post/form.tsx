@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../Button";
-import { get } from "../../../api/rest.api";
+import { get, post } from "../../../api/rest.api";
+import { useRouter } from "next/router";
 
 const PostForm = () => {
   const [userList, setUserList] = useState<any[]>([]);
@@ -10,7 +11,7 @@ const PostForm = () => {
   const [category, setCategory] = useState("");
   const [user, setUser] = useState("");
   const [title, setTitle] = useState("");
-
+  const router = useRouter();
   const fetchUser = async () => {
     const { data, error } = await get("/user");
     if (data && !error) {
@@ -26,10 +27,34 @@ const PostForm = () => {
     }
   };
   useEffect(() => {
+    fetchCategory();
     fetchUser();
   }, []);
+
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("category", category);
+    formData.append("user", user);
+
+    for (let image of images as FileList) {
+      formData.append("images", image as Blob);
+    }
+    const { data, error } = await post("/posts", formData);
+    if (data && !error) {
+      alert("Post created successfully");
+      router.push("/post");
+    } else {
+      alert("Failed to create post");
+    }
+  };
   return (
-    <form className="w-1/2 mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
+    <form
+      onSubmit={onSubmit}
+      className="w-1/2 mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4"
+    >
       <h2 className="text-2xl font-bold text-gray-800">Upload Post</h2>
       <div>
         <label className="block text-sm font-medium text-gray-700">Title</label>
@@ -97,7 +122,10 @@ const PostForm = () => {
           Images
         </label>
         <input
-          onChange={(e) => setImages(e.target.files)}
+          onChange={(e) => {
+            console.log(e.target.files);
+            setImages(e.target.files);
+          }}
           type="file"
           multiple
           accept="image/*"
