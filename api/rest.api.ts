@@ -1,8 +1,14 @@
+import { getToken } from "@/utils/token";
 import axios from "axios";
 import { error } from "console";
 
 const API = axios.create({
   baseURL: "http://localhost:5000/api",
+});
+
+API.interceptors.request.use((req) => {
+  req.headers.Authorization = `Bearer ${getToken()}`;
+  return req;
 });
 
 export const get = async (url: string) => {

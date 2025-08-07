@@ -10,7 +10,7 @@ const Post = () => {
           <Button name="Create Post" backgroundColor="bg-blue-500" />
         </Link>
       </div>
-      {/* <Table columns={column} data={roleList} /> */}
+      <Table columns={column} data={roleList} />
     </div>
   );
 };
