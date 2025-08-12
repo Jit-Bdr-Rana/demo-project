@@ -62,8 +62,8 @@ const Layout = ({ children }: LayoutProps) => {
         {/* header */}
         <div
           className={`${
-            collapse ? "ml-16" : "ml-[16.5rem]"
-          } shadow-md  fixed inset-x-0 text-black border bg-white border-gray-200 p-5 flex justify-between`}
+            collapse ? "ml-[4.4rem]" : "ml-[17rem]"
+          } shadow-md z-50 fixed inset-x-0 text-black border bg-white border-gray-200 p-5 flex justify-between`}
         >
           <div className="flex items-center gap-3">
             <button onClick={() => setCollapse(!collapse)}>
