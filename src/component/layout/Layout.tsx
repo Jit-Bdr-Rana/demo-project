@@ -4,12 +4,16 @@ import { AiFillDashboard } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 import { useState } from "react";
 import Link from "next/link";
+import { BiLogOut } from "react-icons/bi";
+import { removeToken } from "@/utils/token";
+import { useRouter } from "next/router";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const router = useRouter();
   const [collapse, setCollapse] = useState(false);
   const menuList = [
     {
@@ -75,6 +79,14 @@ const Layout = ({ children }: LayoutProps) => {
             <FaUser />
             <span>username</span>
           </div>
+          <button
+            onClick={() => {
+              removeToken();
+              router.push("/");
+            }}
+          >
+            <BiLogOut />
+          </button>
         </div>
 
         <div className=" mt-16 p-3">{children}</div>

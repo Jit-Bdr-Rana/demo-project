@@ -82,7 +82,14 @@ const Post = () => {
           <Button name="Create Post" backgroundColor="bg-blue-500" />
         </Link>
       </div>
-      <Table columns={columns} data={post} />
+      <Table
+        pagination={{
+          pageSize: 10,
+          total: 50,
+        }}
+        columns={columns}
+        data={post}
+      />
     </div>
   );
 };
